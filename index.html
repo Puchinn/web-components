@@ -26,18 +26,38 @@
     <my-toggle id="toggle"></my-toggle>
     <p id="status">Estado actual del toggle: OFF</p>
 
+    <counter-button action="increment"></counter-button>
+    <counter-button action="decrement"></counter-button>
+
+    <counter-display max="10" min="-5" id="display"></counter-display>
+
+    <counter-reset></counter-reset>
+
     <script>
       const toggle = document.getElementById("toggle");
       const status = document.getElementById("status");
+      const counterDisplay = document.getElementById("display");
 
       toggle.addEventListener("toggle-changed", (event) => {
         status.textContent =
           "Estado actual del toggle: " + (event.detail.value ? "ON" : "OFF");
+      });
+
+      document.addEventListener("counter-changed", (event) => {
+        const value = event.detail.value;
+        counterDisplay.increment(value);
+      });
+
+      document.addEventListener("counter-reset", () => {
+        counterDisplay.reset();
       });
     </script>
 
     <script type="module" src="./my-button.js"></script>
     <script type="module" src="./my-card.js"></script>
     <script type="module" src="./my-toggle.js"></script>
+    <script type="module" src="./counter-button.js"></script>
+    <script type="module" src="./counter-display.js"></script>
+    <script type="module" src="./counter-reset.js"></script>
   </body>
 </html>
