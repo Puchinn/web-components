@@ -23,7 +23,21 @@
       <footer slot="footer"><my-button label="Click!"></my-button></footer>
     </my-card>
 
+    <my-toggle id="toggle"></my-toggle>
+    <p id="status">Estado actual del toggle: OFF</p>
+
+    <script>
+      const toggle = document.getElementById("toggle");
+      const status = document.getElementById("status");
+
+      toggle.addEventListener("toggle-changed", (event) => {
+        status.textContent =
+          "Estado actual del toggle: " + (event.detail.value ? "ON" : "OFF");
+      });
+    </script>
+
     <script type="module" src="./my-button.js"></script>
     <script type="module" src="./my-card.js"></script>
+    <script type="module" src="./my-toggle.js"></script>
   </body>
 </html>
